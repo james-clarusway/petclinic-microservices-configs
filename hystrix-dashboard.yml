@@ -6,6 +6,6 @@ spring:
   profiles: docker
 eureka:
   client:
-    enabled: true
+    enabled: false
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/
