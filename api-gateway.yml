@@ -1,11 +1,11 @@
-# zuul:
-#   prefix: /api
-#   ignoredServices: '*'
-#   routes:
-#     vets-service: /vet/**
-#     visits-service: /visit/**
-#     customers-service: /customer/**
-#     api-gateway: /gateway/**
+zuul:
+  prefix: /api
+  ignoredServices: '*'
+  routes:
+    vets-service: /vet/**
+    visits-service: /visit/**
+    customers-service: /customer/**
+    api-gateway: /gateway/**
 
 server:
   port: 8080
@@ -22,8 +22,8 @@ spring:
   profiles: docker
   zipkin:
     baseUrl: http://tracing-server:9411
-# eureka:
-#   client:
-#     enabled: false
-#     serviceUrl:
-#       defaultZone: http://discovery-server:8761/eureka/
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
