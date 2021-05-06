@@ -68,4 +68,5 @@ spring:
     password: petclinic
     #username: clarusway
     #password: Clarusway_1
-    initialization-mode: ALWAYS
+    #initialization-mode: ALWAYS
+    initialization-mode: NEVER
