@@ -62,7 +62,8 @@ spring:
     data: classpath*:db/mysql/data.sql
     #url: jdbc:mysql://localhost:3306/petclinic?useSSL=false
     # url: jdbc:mysql://db-server:3306/petclinic?useSSL=false
-    url: jdbc:mysql://db-server:3306/petclinic
+    # url: jdbc:mysql://db-server:3306/petclinic
+    url: jdbc:mysql://10.107.182.112:3306/petclinic?useSSL=false
     #url: db-server:3306/petclinic?useSSL=false
     username: root
     password: petclinic
