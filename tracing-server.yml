@@ -17,3 +17,12 @@ eureka:
     enabled: true
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/
+      
+---
+spring:
+  profiles: kubernetes
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
