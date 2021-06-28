@@ -1,9 +1,9 @@
-﻿server:
+server:
   port: 8761
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery-server
   # standalone mode
   client:
     registerWithEureka: false

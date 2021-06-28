@@ -6,7 +6,31 @@ zuul:
     visits-service: /visit/**
     customers-service: /customer/**
     api-gateway: /gateway/**
+  #ribbon:
+   # eager-load:
+    #  enabled: true
+      #clients: customers-service, vets-service, visits-service, admin-server, discovery-server, hystrix-dashboard, tracing-server, api-gateway
+  #SendErrorFilter:
+    #post:
+      #disable: true
+  # stripPrefix: false
 
+#---
+#hystrix:
+ # command:
+  #  default:
+   #   execution:
+    #    timeout:
+     #     enabled: false
+---
+ribbon:
+  eureka:
+    enabled: true
+  #ReadTimeout: 100000
+  #ConnectTimeout: 100000 
+
+  
+---
 server:
   port: 8080
   compression:
@@ -19,22 +43,22 @@ spring.messages.basename: messages/messages
 
 ---
 spring:
-  profiles: docker
+  config:
+    activate:
+      on-profile: docker
   zipkin:
     baseUrl: http://tracing-server:9411
-eureka:
-  client:
-    enabled: true
-    serviceUrl:
-      defaultZone: http://discovery-server:8761/eureka/
-      
+
 ---
-spring:
-  profiles: kubernetes
-  zipkin:
-    baseUrl: http://tracing-server:9411
 eureka:
+  #instance:
+    #hostname: api-gateway
   client:
-    enabled: true
+    fetchRegistry: true
+    register-with-eureka: true
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/
+ 
+
+
+

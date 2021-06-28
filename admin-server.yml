@@ -3,18 +3,16 @@ server:
 
 ---
 spring:
-  profiles: docker
-eureka:
-  client:
-    enabled: true
-    serviceUrl:
-      defaultZone: http://discovery-server:8761/eureka/
-      
+  config:
+    activate:
+      on-profile: docker
+
 ---
-spring:
-  profiles: kubernetes
 eureka:
+  instance:
+    hostname: admin-server
   client:
-    enabled: true
+    fetchRegistry: true
+    register-with-eureka: true
     serviceUrl:
       defaultZone: http://discovery-server:8761/eureka/
