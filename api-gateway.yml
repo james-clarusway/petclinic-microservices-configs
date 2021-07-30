@@ -6,10 +6,10 @@ zuul:
     visits-service: /visit/**
     customers-service: /customer/**
     api-gateway: /gateway/**
-  #ribbon:
-   # eager-load:
-    #  enabled: true
-      #clients: customers-service, vets-service, visits-service, admin-server, discovery-server, hystrix-dashboard, tracing-server, api-gateway
+  ribbon:
+    eager-load:
+      enabled: true
+      clients: customers-service, vets-service, visits-service, admin-server, discovery-server, hystrix-dashboard, tracing-server, api-gateway
   #SendErrorFilter:
     #post:
       #disable: true
@@ -23,12 +23,19 @@ zuul:
     #    timeout:
      #     enabled: false
 ---
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+---
 ribbon:
   eureka:
     enabled: true
-  #ReadTimeout: 100000
-  #ConnectTimeout: 100000 
-
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
   
 ---
 server:
